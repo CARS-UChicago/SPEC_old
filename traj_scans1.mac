@@ -6,7 +6,7 @@
 # Mods:
 #    2-Sep-2000  MLR Added ability to scan pseudo-motors, but not tested
 #    5-Dec-2001  MLR T2 Added new psic geometry, fixed bugs
-#    6-Dec-2001  MLR Fixed bug in reading actual positions for pseudomotors
+#    6-Dec-2001  MLR Fixed bug in reading actual positions for pseudomotors 
 #
 # This file provides replacements for the following macros in the standard SPEC
 # macro file "standard.mac".
