@@ -1,0 +1,45 @@
+# User macro file specific to psic
+
+####################################################################
+# A macro called by "wh", "ca" and "ci" to display important
+# geometry quantities.
+# added plus two to _numgeo so can see all the real motors
+# (vs _var in standard.mac)
+def _var '
+	printf("\nH K L =  %.5g  %.5g  %.5g", H,K,L)
+	printf("\t Lambda = %.5g Two Theta = %.5g\n\n",\
+		LAMBDA,TTH)
+	printf("%9s %9s %9s %9s %9s %9s %9s\n",\
+		"Alpha","Beta","Psi","Tau","Qaz","Naz","Omega");
+	printf("%9.4f %9.4f %9.4f %9.4f %9.4f %9.4f %9.4f\n\n",\
+		ALPHA,BETA,PSI,TAU,QAZ,NAZ,OMEGA)
+
+	_mot _numgeo+3
+'
+####################################################################
+
+####################################################################
+## redefine th2th for psic 
+def th2th '
+	if ($# != 4) {
+	#    eprint "Usage:  th2th tth_start_rel tth_finish_rel intervals time"
+      eprint "Usage:  th2th del_start_rel del_finish_rel intervals time"	
+      exit
+	} 
+      #d2scan tth $1 $2 th ($1)/2 ($2)/2 $3 $4
+	d2scan del $1 $2 eta ($1)/2 ($2)/2 $3 $4
+'
+####################################################################
+
+####################################################################
+## reflectivity scan 
+def rlf '
+	if ($# != 4) {
+      eprint "Usage:  rlf eta_start eta_finish intervals time"	
+      exit
+	} 
+      ##Usage:  a2scan  motor1 s1 f1  motor2 s2 f2  intervals time"
+	a2scan eta ($1) ($2) del ($1)*2 ($2)*2  $3 $4
+'
+####################################################################
+

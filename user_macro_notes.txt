@@ -1,0 +1,73 @@
+###################### FILES ####################################
+
+-  The standard spec macros are
+   /usr/lib/spec.d/standard.mac
+   /usr/lib/spec.d/scans.mac
+   /usr/lib/spec.d/scans1.mac
+   /usr/lib/spec.d/psic.mac
+   /usr/lib/spec.d/kappa.mac
+
+-  Note that these macros are replaced when spec is re-installed
+   therefore dont edit these files or the changes will be lost
+
+- The below macro files are not replaced during a new installation 
+  and can be used for defining/replacing macros
+      /usr/lib/spec.d/site_f.mac        (read only when starting fresh)
+      /usr/lib/spec.d/site.mac          (read each time each user starts)
+      /usr/lib/spec.d/fourc/conf.mac    (or sixc, spec, kappa, etc.)
+      ./spec.mac              (relative to start up directory)
+
+
+- The following macro files have been created:
+      
+1.  /usr/lib/spec.d/site.mac
+    # User macro file
+    qdofile("/home/specadm/user_macros/site_user.mac")
+
+    Use the file /home/specadm/user_macros/site_user.mac
+    to add/replace standard macros (note this file is read 
+    each time spec is started)
+
+
+2.  /usr/lib/spec.d/kappa/conf.mac
+    # user macros specific to kappa
+    qdofile("/home/specadm/user_macros/kappa_user.mac")
+
+    Use the file /home/specadm/user_macros/kappa_user.mac
+    to add/replace macros for kappa
+
+
+3.  /usr/lib/spec.d/psic/conf.mac
+    # user macros specific to psic
+    qdofile("/home/specadm/user_macros/psic_user.mac")
+
+    Use the file /home/specadm/user_macros/psic_user.mac
+    to add/replace macros for psic
+
+
+-  Note before defining a macro type lsdef in spec to see
+   if the name is already defined
+
+
+################# Notes on User defined macros ########################
+
+- To use traj scanning type traj_scan_on in spec, to turn it off
+  type traj_scan_off
+
+-  Setting up the amptek detector 11-01
+   To use the epics defined mca roi set these
+   mca_par("disable",0)      # enables the mca (this is default value)
+   mca_par("soft_preset",1)  # resets the mca when counting
+   and check the user_getcounts macro in site_user.mac
+
+   To use the mca roi through the scaler turn off the mca in spec
+   mca_par("disable",1)  # disables the mca
+   and turn the mca on in epics with an infinite real time!!!
+
+
+
+
+
+
+
+
